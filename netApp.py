@@ -13,8 +13,8 @@ indice_let = 1
 
 
 def sendLetHTTP(let_time):
-	url="https://iotmmsp1922964683trial.hanatrial.ondemand.com/com.sap.iotservices.mms/v1/api/http/data/0f75c8e3-7852-4ab2-b561-408193b7d406"
-	payload="{\"mode\":\"sync\", \"messageType\": \"db976d090e5969fcfdb6\", \"messages\":[{\"timestamp\":"+ let_time + "}]}"
+	url="https://iotmmsp1942964683trial.hanatrial.ondemand.com/com.sap.iotservices.mms/v1/api/http/data/0f75c8e3-7852-4ab2-b561-408193b7d406"
+	payload="{\"mode\":\"sync\", \"messageType\": \"db976d090e0969fcfdb6\", \"messages\":[{\"timestamp\":"+ let_time + "}]}"
 	headers={
 		'content-type': "application/json",
 		'Authorization': "Bearer 6750b7da4256983e7780663680c0323d"
