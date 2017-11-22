@@ -1,4 +1,5 @@
 #!/usr/bin/python
+#Marianne is better than Damien
 import requests
 import time
 from adxl345 import ADXL345
