@@ -6,6 +6,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(18, GPIO.OUT)
 GPIO.setwarnings(False)
 
+#Boucle infinie
 while True:
 	#print("LED on")
 	GPIO.output(18, True)

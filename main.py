@@ -1,5 +1,5 @@
 #HTTP Get to retrieve SCP messages
-#Edited by Woodmelt(Damien B.)
+
 import requests
 import json
 import time
