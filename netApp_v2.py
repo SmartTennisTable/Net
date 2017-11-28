@@ -65,7 +65,7 @@ while True:
 			sendLetHTTP(timeStamp)
 			indice_let = indice_let + 1
 			if diode == "":
-				diode = subprocess.Popen("python ./ledApp.py", stdout=subprocess.PIPE, shell=True, preexec_fn=os.setsid)
+				diode = subprocess.Popen("python ./ledApp_5s.py", stdout=subprocess.PIPE, shell=True, preexec_fn=os.setsid)
 			else:
 				print("LED already triggered")
 			#time.sleep(1) #on attend 1s apres un let

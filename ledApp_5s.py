@@ -7,8 +7,8 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(18, GPIO.OUT)
 GPIO.setwarnings(False)
 
-#Boucle 5 secondes
-for i in range(0, 25):
+#Boucle 3 secondes
+for i in range(0, 15):
 	#print("LED on")
 	GPIO.output(18, True)
 	time.sleep(0.2)
