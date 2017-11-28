@@ -10,6 +10,7 @@ liste_seuil = list() #on cree une liste seuil
 adxl345 = ADXL345()
 seuil = 0
 indice_let = 1
+diode = ""
 
 #HTTP Push pour envoyer LET dans SCP
 def sendLetHTTP(let_time):
@@ -58,7 +59,11 @@ while True:
 			print("LET n{}; {}".format(indice_let, timeStamp))
 			sendLetHTTP(timeStamp)
 			indice_let = indice_let + 1
-			time.sleep(1) #on attend 1s apres un let
+			if diode == "":
+				diode = subprocess.Popen("python ./ledApp.py", stdout=subprocess.PIPE, shell=True, preexec_fn=os.setsid)
+			else:
+				print("LED already triggered")
+			#time.sleep(1) #on attend 1s apres un let
 		
 		del liste_valeurs[:]
 

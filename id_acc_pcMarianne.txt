@@ -1,0 +1,17 @@
+PC MARIANNE
+
+device id : 9f7e901a-1b4d-4d3f-a92b-59a84f3adddc
+
+message type id : 530c6dd0b691787c6b44
+
+
+{"messageType":"530c6dd0b691787c6b44","messages":[{"status", true}]}
+
+
+
+ACCELEROMETRE
+token : 6750b7da4256983e7780663680c0323d
+
+device id : 0f75c8e3-7852-4ab2-b561-408193b7d406
+
+message type id : db976d090e0969fcfdb6

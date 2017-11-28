@@ -1,5 +1,3 @@
-#HTTP Get to retrieve SCP messages
-
 import requests
 import json
 import time
@@ -12,6 +10,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(18, GPIO.OUT)
 GPIO.setwarnings(False)
 
+#HTTP Get pour recuperer si LET dans SCP messages
 url = "https://iotmmsp1942964683trial.hanatrial.ondemand.com/com.sap.iotservices.mms/v1/api/http/data/9f7e901a-1b4d-4d3f-a92b-59a84f3adddc"
 
 headers = {
@@ -32,7 +31,7 @@ while True:
 		status = responseTable[i]['messages'][0]['status']
 
 		if status == True:
-			#print("Led on")
+#			print("Led on")
 			if diode == "":
 				diode = subprocess.Popen("python ./ledApp.py", stdout=subprocess.PIPE, shell=True, preexec_fn=os.setsid)
 			else:
