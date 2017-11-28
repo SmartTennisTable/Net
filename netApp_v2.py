@@ -1,6 +1,7 @@
 #commentaire
 #!/usr/bin/python
 import requests
+import datetime
 import time
 import json
 import os
@@ -60,7 +61,7 @@ while True:
 		moyenne = mean(liste_valeurs)
 		
 		if moyenne > seuil:
-			timeStamp = str(time.time())
+			timeStamp = datetime.datetime.now()
 			print("LET n{}; {}".format(indice_let, timeStamp))
 			indice_let = indice_let + 1
 			diode = subprocess.Popen("python ./ledApp_5s.py", stdout=subprocess.PIPE, shell=True, preexec_fn=os.setsid)
