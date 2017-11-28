@@ -61,8 +61,9 @@ while True:
 		moyenne = mean(liste_valeurs)
 		
 		if moyenne > seuil:
+			timeStampPrint = time.ctime()
 			timeStamp = str(int(time.time()))
-			print("LET n{}; {}".format(indice_let, timeStamp))
+			print("LET n{}; {}".format(indice_let, timeStampPrint))
 			indice_let = indice_let + 1
 			diode = subprocess.Popen("python ./ledApp_5s.py", stdout=subprocess.PIPE, shell=True, preexec_fn=os.setsid)
 			sendLetHTTP(timeStamp)
