@@ -1,6 +1,11 @@
+#commentaire
 #!/usr/bin/python
 import requests
 import time
+import json
+import os
+import signal
+import subprocess
 from adxl345 import ADXL345
 from statistics import mean
 
