@@ -20,7 +20,7 @@ diode = ""
 #HTTP Push pour envoyer LET dans SCP
 def sendLetHTTP(let_time):
 	url="https://iotmmsp1942964683trial.hanatrial.ondemand.com/com.sap.iotservices.mms/v1/api/http/data/0f75c8e3-7852-4ab2-b561-408193b7d406"
-	payload="{\"mode\":\"sync\", \"messageType\": \"db976d090e0969fcfdb6\", \"messages\":[{\"timestamp\":"+ let_time + "}]}"
+	payload="{\"mode\":\"sync\", \"messageType\": \"db976d090e0969fcfdb6\", \"messages\":[{\"timestamp\":"+ let_time +"}]}"
 	headers={
 		'content-type': "application/json",
 		'Authorization': "Bearer 6750b7da4256983e7780663680c0323d"
@@ -62,12 +62,9 @@ while True:
 		if moyenne > seuil:
 			timeStamp = time.ctime()
 			print("LET n{}; {}".format(indice_let, timeStamp))
-			sendLetHTTP(timeStamp)
 			indice_let = indice_let + 1
-			if diode == "":
-				diode = subprocess.Popen("python ./ledApp_5s.py", stdout=subprocess.PIPE, shell=True, preexec_fn=os.setsid)
-			else:
-				print("LED already triggered")
+			diode = subprocess.Popen("python ./ledApp_5s.py", stdout=subprocess.PIPE, shell=True, preexec_fn=os.setsid)
+			sendLetHTTP(timeStamp)
 			#time.sleep(1) #on attend 1s apres un let
 		
 		del liste_valeurs[:]
