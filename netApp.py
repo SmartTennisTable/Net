@@ -56,9 +56,9 @@ while True:
 		if moyenne > seuil:
 			timeStamp = time.ctime()
 			print("LET n{}; {}".format(indice_let, timeStamp))
+			subprocess.Popen("python ./ledApp.py", stdout=subprocess.PIPE, shell=True, preexec_fn=os.setsid)
 			sendLetHTTP(timeStamp)
 			indice_let = indice_let + 1
-			time.sleep(1) #on attend 1s apres un let
 		
 		del liste_valeurs[:]
 
