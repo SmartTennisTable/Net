@@ -18,6 +18,31 @@ seuil = 0
 indice_let = 1
 diode = ""
 
+status = False
+
+#HTTP Get pour recuperer si lancementProg dans SCP messages
+url = "https://iotmmsp1942964683trial.hanatrial.ondemand.com/com.sap.iotservices.mms/v1/api/http/data/5658888b-3302-490c-a813-004ad9645613"
+
+headers = {
+	'content-type': "application/json;charset=utf-8",
+	'authorization': "Bearer 4298a54b80cd4d3d2f4c448db253c9",
+	'cache-control': "no-cache",
+	}
+
+print("En attente du lancement programme depuis SCP")
+
+while status == False:
+	response = requests.request("GET", url, headers=headers)
+	responseTable = json.loads(response.text)
+	taille = len(responseTable)
+
+	for i in range(0, taille):
+		print(responseTable[i]['messages'][0]['status'])
+		status = responseTable[i]['messages'][0]['status']
+
+	time.sleep(0.5)
+
+
 #HTTP Push pour envoyer LET dans SCP
 def sendLetHTTP(let_time):
 	url="https://iotmmsp1942964683trial.hanatrial.ondemand.com/com.sap.iotservices.mms/v1/api/http/data/0f75c8e3-7852-4ab2-b561-408193b7d406"
