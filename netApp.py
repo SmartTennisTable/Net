@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import requests
 import time
+import os
 from adxl345 import ADXL345
 from statistics import mean
 import subprocess
