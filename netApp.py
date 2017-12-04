@@ -3,6 +3,7 @@ import requests
 import time
 from adxl345 import ADXL345
 from statistics import mean
+import subprocess
 
 liste_valeurs = list() #on cree une liste vide
 liste_seuil = list() #on cree une liste seuil
