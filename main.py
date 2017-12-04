@@ -34,6 +34,6 @@ while status == False:
 		status = responseTable[i]['messages'][0]['status']
 
 	if status == True:
-		subprocess.call("start python ./netApp.py")
+		subprocess.Popen("python ./netApp.py")
 
 	time.sleep(0.5)
