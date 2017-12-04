@@ -34,6 +34,6 @@ while status == False:
 		status = responseTable[i]['messages'][0]['status']
 
 	if status == True:
-		subprocess.Popen("python ./netApp.py")
+		subprocess.Popen("python ./ledApp.py", stdout=subprocess.PIPE, shell=True, preexec_fn=os.setsid)
 
 	time.sleep(0.5)
