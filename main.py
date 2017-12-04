@@ -34,6 +34,10 @@ while status == False:
 		status = responseTable[i]['messages'][0]['status']
 
 	if status == True:
-		subprocess.Popen("python ./netApp.py", stdout=subprocess.PIPE, shell=True, preexec_fn=os.setsid)
+		acc = subprocess.Popen("python ./netApp.py", stdout=subprocess.PIPE, shell=True, preexec_fn=os.setsid)
+		for line in iter(acc.stdout.readline, b''):
+			print(line)
+		acc.stdout.close()
+		acc.wait()
 
 	time.sleep(0.5)
