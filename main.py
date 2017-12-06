@@ -28,13 +28,13 @@ while status == False:
 	response = requests.request("GET", url, headers=headers)
 	responseTable = json.loads(response.text)
 	taille = len(responseTable)
-	
-	if taille <= 0:
+	print(response.text)
+	if taille >= 0:
 		for i in range(0, taille):
 			print(responseTable[i]['messages'][0]['status'])
 			status = responseTable[i]['messages'][0]['status']
 
 		if status == True:
-			execfile("./netApp.py")
+			execfile("/home/stt/net/netApp.py")
 
 	time.sleep(0.5)
