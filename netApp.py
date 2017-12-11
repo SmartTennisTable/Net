@@ -20,26 +20,25 @@ ID_MATCH = 0
 print("L'etalonnage du capteur est en cours.")
 
 while seuil == 0:
-	if len(liste_seuil) >= 3000:
-		seuil = mean(liste_seuil)
-		seuil = seuil + seuil*0.1
-		print("l'etalonnage du capteur est termine.")
-		time.sleep(0.5)
-		print("Le seuil est de : {}".format(seuil))
-		time.sleep(0.5)
-		print("Les echanges peuvent commencer.")
+    if len(liste_seuil) >= 3000:
+        seuil = mean(liste_seuil)
+        seuil = seuil + seuil * 0.1
+        print("l'etalonnage du capteur est termine.")
+        time.sleep(0.5)
+        print("Le seuil est de : {}".format(seuil))
+        time.sleep(0.5)
+        print("Les echanges peuvent commencer.")
 
-	axes = adxl345.getAxes(True)
-	x = axes['x']
-	y = axes['y']
-	z = axes['z']
-	somme_seuil = abs(z)
+    axes = adxl345.getAxes(True)
+    x = axes['x']
+    y = axes['y']
+    z = axes['z']
+    somme_seuil = abs(z)
 
-	liste_seuil.append(somme_seuil) #on ajoute la somme des valeurs seuils en fin de liste
-	time.sleep(0.001)
+    liste_seuil.append(somme_seuil)  # on ajoute la somme des valeurs seuils en fin de liste
+    time.sleep(0.001)
 
-#on lance le programme Accelerometre
-
+# on lance le programme Accelerometre
 while True:
 
     if len(liste_valeurs) >= 100:
