@@ -2,10 +2,9 @@
 import RPi.GPIO as GPIO
 import time
 import sys
+import sttiot
 
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(18, GPIO.OUT)
-GPIO.setwarnings(False)
+sttiot.initGPIO()
 
 #Boucle 3 secondes
 for i in range(0, 15):

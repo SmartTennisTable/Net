@@ -5,11 +5,11 @@ import time
 import os
 import signal
 import subprocess
-# import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 import sttiot
 
 # SET GPIO to default
-# sttiot.initGPIO()
+sttiot.initGPIO()
 status = False
 
 print("Waiting instructions from SAP Cloud Platform - IOTMMS - P1942978066")
