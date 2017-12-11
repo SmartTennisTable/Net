@@ -5,36 +5,32 @@ import time
 import os
 import signal
 import subprocess
-import RPi.GPIO as GPIO
+# import RPi.GPIO as GPIO
+import sttiot
 
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(18, GPIO.OUT)
-GPIO.setwarnings(False)
-
-#HTTP Get pour recuperer les messages dans SCP
-url = "https://iotmmsp1942964683trial.hanatrial.ondemand.com/com.sap.iotservices.mms/v1/api/http/data/5658888b-3302-490c-a813-004ad9645613"
-
-headers = {
-	'content-type': "application/json;charset=utf-8",
-	'authorization': "Bearer 4298a54b80cd4d3d2f4c448db253c9",
-	'cache-control': "no-cache",
-	}
-
-print("En attente du lancement programme depuis SCP")
-
+# SET GPIO to default
+# sttiot.initGPIO()
 status = False
 
+print("Waiting instructions from SAP Cloud Platform - IOTMMS - P1942978066")
+
 while status == False:
-	response = requests.request("GET", url, headers=headers)
-	responseTable = json.loads(response.text)
-	taille = len(responseTable)
-	
-	if taille <= 0:
-		for i in range(0, taille):
-			print(responseTable[i]['messages'][0]['status'])
-			status = responseTable[i]['messages'][0]['status']
+    response = sttiot.initPi()
 
-		if status == True:
-			execfile("./netApp.py")
+    contentMsg = json.loads(response.text)
+    taille = len(contentMsg)
 
-	time.sleep(0.5)
+    if taille >= 0:
+        for i in range(0, taille):
+            function = contentMsg[i]['messages'][0]['function']
+            action = contentMsg[i]['messages'][0]['action']
+            print(function)
+
+            if function == "init":
+                execfile("./netApp.py")
+            elif function == "shutdown":
+                execfile("./shutdown.sh")
+            else:
+                print("ERROR 101 : WRONG FUNCTION")
+
+    time.sleep(0.5)
