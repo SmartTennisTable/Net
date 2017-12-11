@@ -6,6 +6,9 @@ import subprocess
 from adxl345 import ADXL345
 from statistics import mean
 import sttiot
+import RPi.GPIO as GPIO
+
+sttiot.initGPIO()
 
 liste_valeurs = list()  # on cree une liste vide
 liste_seuil = list()  # on cree une liste seuil
@@ -18,6 +21,7 @@ ID_MATCH = 0
 
 # on calibre l'accelerometre. il s'agit de trouver le seuil du LET. La calibration dure 3s.
 print("L'etalonnage du capteur est en cours.")
+GPIO.output(sttiot.BLUEPIN, True)
 
 while seuil == 0:
     if len(liste_seuil) >= 3000:
@@ -28,6 +32,12 @@ while seuil == 0:
         print("Le seuil est de : {}".format(seuil))
         time.sleep(0.5)
         print("Les echanges peuvent commencer.")
+		GPIO.output(sttiot.BLUEPIN, False)
+		time.sleep(0.2)
+		for i in range(0, 2):
+			GPIO.output(sttiot.GREENPIN, True)
+			time.sleep(0.2)
+			GPIO.output(sttiot.GREENPIN, False)
 
     axes = adxl345.getAxes(True)
     x = axes['x']

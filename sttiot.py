@@ -15,12 +15,16 @@ STTPIE_OAUTH_TOKEN = 'a8baa42b505b82ad0455643f8bed3a6'
 # IoT - IOTMMS
 IOTMMS_HTTP = 'https://iotmmsp1942978066trial.hanatrial.ondemand.com/com.sap.iotservices.mms/v1/api/http/data/'
 
+# VARIABLES PIN LED RGB
+BLUEPIN = 14
+GREENPIN = 15
+REDPIN = 18
 
 def initGPIO():
     GPIO.setmode(GPIO.BCM)
-    GPIO.setup(14, GPIO.OUT)  # BLUE
-    GPIO.setup(15, GPIO.OUT)  # GREEN
-    GPIO.setup(18, GPIO.OUT)  # RED
+    GPIO.setup(BLUEPIN, GPIO.OUT)  # BLUE
+    GPIO.setup(GREENPIN, GPIO.OUT)  # GREEN
+    GPIO.setup(REDPIN, GPIO.OUT)  # RED
     GPIO.setwarnings(False)
 
 
