@@ -32,12 +32,12 @@ while seuil == 0:
         print("Le seuil est de : {}".format(seuil))
         time.sleep(0.5)
         print("Les echanges peuvent commencer.")
-		GPIO.output(sttiot.BLUEPIN, False)
-		time.sleep(0.2)
-		for i in range(0, 2):
-			GPIO.output(sttiot.GREENPIN, True)
-			time.sleep(0.2)
-			GPIO.output(sttiot.GREENPIN, False)
+        GPIO.output(sttiot.BLUEPIN, False)
+        time.sleep(0.2)
+        for i in range(0, 2):
+            GPIO.output(sttiot.GREENPIN, True)
+            time.sleep(0.2)
+            GPIO.output(sttiot.GREENPIN, False)
 
     axes = adxl345.getAxes(True)
     x = axes['x']
