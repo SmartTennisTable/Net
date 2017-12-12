@@ -63,10 +63,10 @@ while True:
             timeStampPrint = time.ctime()
             timeStamp = str(int(time.time()))
             print("LET n {}; {}".format(indice_let, timeStampPrint))
-            indice_let = indice_let + 1
             diode = subprocess.Popen("python ./ledApp.py", stdout=subprocess.PIPE, shell=True, preexec_fn=os.setsid)
             # sendLetHTTP(timeStamp)
             sttiot.sendLet(ID_TABLE, ID_MATCH, indice_let, timeStamp)
+            indice_let = indice_let + 1
         del liste_valeurs[:]
 
     axes = adxl345.getAxes(True)
