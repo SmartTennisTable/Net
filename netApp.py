@@ -21,7 +21,7 @@ ID_MATCH = 0
 
 #on demande un ID de match et de table
 ID_MATCH = int(input("Id du match : "))
-ID_MATCH = int(input("Id de la table : "))
+ID_TABLE = int(input("Id de la table : "))
 
 # on calibre l'accelerometre. il s'agit de trouver le seuil du LET. La calibration dure 3s.
 print("L'etalonnage du capteur est en cours.")
