@@ -40,9 +40,9 @@ def initPi():
     return response
 
 
-def sendLet(id_table, id_match, id_let, timestamp):
+def sendLet(ID_TABLE, ID_MATCH, indice_let, timestamp):
     url = IOTMMS_HTTP + STTPIE_DEVICE_ID
-    payload = '{"mode":"sync", "messageType": "' + SENSOR_NET_MESSAGE_ID + '", "messages":[{"id_table": 0, "id_match": 0, "id_let": 0, "timestamp":' + str(
+    payload = '{"mode":"sync", "messageType": "' + SENSOR_NET_MESSAGE_ID + '", "messages":[{"id_table": ' + ID_TABLE + ', "id_match": ' + ID_MATCH + ', "id_let": ' + indice_let + ', "timestamp":' + str(
         timestamp) + '}]}'
     headers = {
         'content-type': "application/json",
