@@ -52,6 +52,7 @@ while seuil == 0:
 
     liste_seuil.append(somme_seuil)  # on ajoute la somme des valeurs seuils en fin de liste
     time.sleep(0.001)
+    GPIO.output(sttiot.BLUEPIN, False)
 
 # on lance le programme Accelerometre
 while True:
