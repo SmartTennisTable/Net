@@ -16,7 +16,7 @@ STTPIE_OAUTH_TOKEN = 'a8baa42b505b82ad0455643f8bed3a6'
 IOTMMS_HTTP = 'https://iotmmsp1942978066trial.hanatrial.ondemand.com/com.sap.iotservices.mms/v1/api/http/data/'
 
 # VARIABLES PIN LED RGB
-BLUEPIN = 25
+BLUEPIN = 14
 GREENPIN = 15
 REDPIN = 18
 
