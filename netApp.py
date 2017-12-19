@@ -1,4 +1,4 @@
-#!/usr/bin/python
+x#!/usr/bin/python
 import requests
 import time
 import os
@@ -25,7 +25,7 @@ ID_TABLE = int(input("Id de la table : "))
 
 # on calibre l'accelerometre. il s'agit de trouver le seuil du LET. La calibration dure 3s.
 print("L'etalonnage du capteur est en cours.")
-GPIO.output(sttiot.BLUEPIN, True)
+#GPIO.output(sttiot.BLUEPIN, True)
 
 while seuil == 0:
     if len(liste_seuil) >= 3000:
@@ -36,12 +36,12 @@ while seuil == 0:
         print("Le seuil est de : {}".format(seuil))
         time.sleep(0.5)
         print("Les echanges peuvent commencer.")
-        GPIO.output(sttiot.BLUEPIN, False)
+#        GPIO.output(sttiot.BLUEPIN, False)
         time.sleep(0.2)
         for i in range(0, 2):
-            GPIO.output(sttiot.GREENPIN, True)
+#            GPIO.output(sttiot.GREENPIN, True)
             time.sleep(0.2)
-            GPIO.output(sttiot.GREENPIN, False)
+#            GPIO.output(sttiot.GREENPIN, False)
             time.sleep(0.2)
 
     axes = adxl345.getAxes(True)
@@ -52,7 +52,6 @@ while seuil == 0:
 
     liste_seuil.append(somme_seuil)  # on ajoute la somme des valeurs seuils en fin de liste
     time.sleep(0.001)
-    GPIO.output(sttiot.BLUEPIN, False)
 
 # on lance le programme Accelerometre
 while True:

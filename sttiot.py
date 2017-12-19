@@ -22,8 +22,8 @@ REDPIN = 18
 
 def initGPIO():
     GPIO.setmode(GPIO.BCM)
-    GPIO.setup(BLUEPIN, GPIO.OUT)  # BLUE
-    GPIO.setup(GREENPIN, GPIO.OUT)  # GREEN
+#    GPIO.setup(BLUEPIN, GPIO.OUT)  # BLUE
+#    GPIO.setup(GREENPIN, GPIO.OUT)  # GREEN
     GPIO.setup(REDPIN, GPIO.OUT)  # RED
     GPIO.setwarnings(False)
 
