@@ -1,4 +1,4 @@
-x#!/usr/bin/python
+#!/usr/bin/python
 import requests
 import time
 import os
