@@ -20,29 +20,25 @@ ID_TABLE = 0
 ID_MATCH = 0
 
 #on demande un ID de match et de table
-ID_MATCH = int(input("Id du match : "))
-ID_TABLE = int(input("Id de la table : "))
+ID_MATCH = int(input("ID match : "))
+ID_TABLE = int(input("ID table : "))
 
 # on calibre l'accelerometre. il s'agit de trouver le seuil du LET. La calibration dure 3s.
-print("L'etalonnage du capteur est en cours.")
+print("Calibration : [IN PROGRESS]")
 #GPIO.output(sttiot.BLUEPIN, True)
 
 while seuil == 0:
     if len(liste_seuil) >= 3000:
         seuil = mean(liste_seuil)
         seuil = seuil + seuil * 0.1
-        print("l'etalonnage du capteur est termine.")
+        print("Calibration: [OK]")
         time.sleep(0.5)
-        print("Le seuil est de : {}".format(seuil))
+        #print("Threshold: {}".format(seuil))
+        #time.sleep(0.5)
+        print("Lets the game begin !")
+        GPIO.output(sttiot.REDPIN, True)
         time.sleep(0.5)
-        print("Les echanges peuvent commencer.")
-#        GPIO.output(sttiot.BLUEPIN, False)
-        time.sleep(0.2)
-        for i in range(0, 2):
-#            GPIO.output(sttiot.GREENPIN, True)
-            time.sleep(0.2)
-#            GPIO.output(sttiot.GREENPIN, False)
-            time.sleep(0.2)
+        GPIO.output(sttiot.REDPIN, False)
 
     axes = adxl345.getAxes(True)
     x = axes['x']
