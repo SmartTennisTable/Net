@@ -63,9 +63,19 @@ while True:
             timeStampPrint = time.ctime()
             timeStamp = str(int(time.time()))
             print("LET n {}; {}".format(indice_let, timeStampPrint))
-            diode = subprocess.Popen("python ./ledApp.py", stdout=subprocess.PIPE, shell=True, preexec_fn=os.setsid)
-            # sendLetHTTP(timeStamp)
+            #diode = subprocess.Popen("python ./ledApp.py", stdout=subprocess.PIPE, shell=True, preexec_fn=os.setsid)
+            #sendLetHTTP(timeStamp)
             sttiot.sendLet(ID_TABLE, ID_MATCH, indice_let, timeStamp)
+            
+            for j in range(0, 5):
+                print("LED on")
+                GPIO.output(sttiot.REDPIN, True)
+                time.sleep(0.1)
+                print("LED off")
+                GPIO.output(sttiot.REDPIN, False)
+                time.sleep(0.1)
+                j = j + 1
+            
             indice_let = indice_let + 1
         del liste_valeurs[:]
 
