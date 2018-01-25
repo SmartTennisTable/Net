@@ -1,8 +1,8 @@
 import paho.mqtt.client as mqtt
 from getch import getch
 
-topic_push = "iot/data/iotmmsp1942978066trial/v1/85732072-22b7-4cd1-ae8f-d363975c0f91"
-topic_pull = "iot/push/iotmmsp1942978066trial/v1/85732072-22b7-4cd1-ae8f-d363975c0f91"
+TOPIC_PUSH = "iot/data/iotmmsp1942978066trial/v1/85732072-22b7-4cd1-ae8f-d363975c0f91"
+TOPIC_PULL = "iot/push/iotmmsp1942978066trial/v1/85732072-22b7-4cd1-ae8f-d363975c0f91"
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
@@ -11,9 +11,9 @@ def on_connect(client, userdata, flags, rc):
     else:
         print("Connection aborted")
     #FromDevice
-    client.subscribe((topic_pull, 1))
+    client.subscribe((TOPIC_PUSH, 1))
     #ToDevice
-    client.subscribe((topic_push, 1))
+    client.subscribe((TOPIC_PULL, 1))
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
@@ -37,7 +37,7 @@ while True:
     print("Pressed : " + key)
 
     if key != "":
-        client.publish(topic_pull, "")
+        client.publish(TOPIC_PULL, "")
 
     if key == "q":
         break

@@ -7,30 +7,42 @@ import signal
 import subprocess
 import RPi.GPIO as GPIO
 import sttiot
+import paho.mqtt.client as mqtt
 
 # SET GPIO to default
 sttiot.initGPIO()
-status = False
+taille = 0
 
-print("Waiting instructions from SAP Cloud Platform - IOTMMS - P1942978066")
+client = mqtt.Client()
+client.on_connect = sttiot.on_connect
+client.on_message = sttiot.on_message
+client.username_pw_set("capllkmg", password="TYk-UHLw95TH")
+client.connect("m14.cloudmqtt.com", 15839, 60)
 
-while status == False:
-    response = sttiot.initPi()
+client.loop_start()
 
-    contentMsg = json.loads(response.text)
-    taille = len(contentMsg)
+while True:
+    continue
+    #response = sttiot.initPi()
 
-    if taille >= 0:
-        for i in range(0, taille):
-            function = contentMsg[i]['messages'][0]['function']
-            action = contentMsg[i]['messages'][0]['action']
-            print(function)
+    #contentMsg = json.loads(response.text)
+    #taille = len(contentMsg)
 
-            if function == "init":
-                execfile("./netApp.py")
-            elif function == "shutdown":
-                execfile("./shutdown.sh")
-            else:
-                print("ERROR 101 : WRONG FUNCTION")
+    # if taille > 0:
+    #     for i in range(0, taille):
+    #         function = contentMsg[i]['messages'][0]['function']
+    #         action = contentMsg[i]['messages'][0]['action']
+    #         print(function)
+    #
+    #         if function == "init":
+    #             execfile("./netApp.py")
+    #         elif function == "shutdown":
+    #             execfile("./shutdown.sh")
+    #         else:
+    #             print("ERROR 101 : WRONG FUNCTION")
 
-    time.sleep(0.5)
+    #time.sleep(0.5)
+
+
+
+
