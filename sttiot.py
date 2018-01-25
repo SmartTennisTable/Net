@@ -1,8 +1,6 @@
 import requests
 import time
 import RPi.GPIO as GPIO
-from getch import getch
-import paho.mqtt.client as mqtt
 
 # IoT - SENSOR_NET
 SENSOR_NET_MESSAGE_ID = 'be4cb53c070a4aa01e96'
@@ -55,21 +53,3 @@ def sendLet(ID_TABLE, ID_MATCH, indice_let, timestamp):
     print(response.text)
     time.sleep(2)
 
-
-TOPIC_PUSH = "iot/data/iotmmsp1942978066trial/v1/85732072-22b7-4cd1-ae8f-d363975c0f91"
-TOPIC_PULL = "iot/push/iotmmsp1942978066trial/v1/85732072-22b7-4cd1-ae8f-d363975c0f91"
-
-# The callback for when the client receives a CONNACK response from the server.
-def on_connect(client, userdata, flags, rc):
-    if (rc == 0):
-        print("Waiting instructions from SAP Cloud Platform - IOTMMS - P1942978066")
-    else:
-        print("Connection aborted")
-    #FromDevice
-    client.subscribe((TOPIC_PUSH, 1))
-    #ToDevice
-    client.subscribe((TOPIC_PULL, 1))
-
-# The callback for when a PUBLISH message is received from the server.
-def on_message(client, userdata, msg):
-    print(msg.topic+" "+str(msg.payload))
