@@ -50,26 +50,6 @@ client.loop_start()
 
 while True:
     continue
-    #response = sttiot.initPi()
-
-    #contentMsg = json.loads(response.text)
-    #taille = len(contentMsg)
-
-    # if taille > 0:
-    #     for i in range(0, taille):
-    #         function = contentMsg[i]['messages'][0]['function']
-    #         action = contentMsg[i]['messages'][0]['action']
-    #         print(function)
-    #
-    #         if function == "init":
-    #             execfile("./netApp.py")
-    #         elif function == "shutdown":
-    #             execfile("./shutdown.sh")
-    #         else:
-    #             print("ERROR 101 : WRONG FUNCTION")
-
-    #time.sleep(0.5)
-
 
 
 

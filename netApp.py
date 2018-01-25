@@ -7,6 +7,40 @@ from adxl345 import ADXL345
 from statistics import mean
 import sttiot
 import RPi.GPIO as GPIO
+import paho.mqtt.client as mqtt
+
+
+TOPIC_PUSH = "iot/data/iotmmsp1942978066trial/v1/85732072-22b7-4cd1-ae8f-d363975c0f91"
+TOPIC_PULL = "iot/push/iotmmsp1942978066trial/v1/85732072-22b7-4cd1-ae8f-d363975c0f91"
+
+# The callback for when the client receives a CONNACK response from the server.
+def on_connect(client, userdata, flags, rc):
+    if (rc == 0):
+        print("Ready to push daat to SAP Cloud Platform - IOTMMS - P1942978066")
+    else:
+        print("Connection aborted")
+    #FromDevice
+    client.subscribe((TOPIC_PUSH, 1))
+    #ToDevice
+    client.subscribe((TOPIC_PULL, 1))
+
+# The callback for when a PUBLISH message is received from the server.
+def on_message(client, userdata, msg):
+    print(msg.topic)
+    payload = json.loads(msg.payload)
+    function = payload['messages'][0]['function']
+    action = payload['messages'][0]['action']
+
+    if function == "init":
+        execfile("/home/stt/net/netApp.py")
+
+client = mqtt.Client()
+client.on_connect = on_connect
+client.on_message = on_message
+client.username_pw_set("capllkmg", password="TYk-UHLw95TH")
+client.connect("m14.cloudmqtt.com", 15839, 60)
+
+client.loop_start()
 
 sttiot.initGPIO()
 
@@ -53,8 +87,12 @@ while True:
 			timeStampPrint = time.ctime()
 			timeStamp = str(int(time.time()))
 			print("LET n {}; {}".format(indice_let, timeStampPrint))
-			#diode = subprocess.Popen("python ./ledApp.py", stdout=subprocess.PIPE, shell=True, preexec_fn=os.setsid)
-			# sendLetHTTP(timeStamp)
+
+			payload = '{"mode":"sync", "messageType": "' + sttiot.SENSOR_NET_MESSAGE_ID + '", "messages":[{"id_table": ' + str(
+				ID_TABLE) + ', "id_match": ' + str(ID_MATCH) + ', "id_let": ' + str(
+				indice_let) + ', "timestamp":' + str(timestamp) + '}]}'
+
+			client.publish(TOPIC_PULL, payload)
 
 			for j in range (0, 5):
 				GPIO.output(sttiot.REDPIN, True)
@@ -62,7 +100,6 @@ while True:
 				GPIO.output(sttiot.REDPIN, False)
 				time.sleep(0.1)
 
-			sttiot.sendLet(ID_TABLE, ID_MATCH, indice_let, timeStamp)
 
 			indice_let = indice_let + 1
 		del liste_valeurs[:]
