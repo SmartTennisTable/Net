@@ -8,6 +8,7 @@ def on_connect(client, userdata, flags, rc):
     # reconnect then subscriptions will be renewed.
     client.subscribe(("/test", 1))
     client.subscribe(("iot/data/iotmmsp1942978066trial/v1/85732072-22b7-4cd1-ae8f-d363975c0f91", 1))
+    client.subscribe(("iot/push/iotmmsp1942978066trial/v1/85732072-22b7-4cd1-ae8f-d363975c0f91", 1))
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
