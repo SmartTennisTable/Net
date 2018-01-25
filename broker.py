@@ -30,4 +30,5 @@ client.loop_start()
 
 while True:
     print("ok")
+
     #publish(topic, payload=None, qos=0, retain=False)
