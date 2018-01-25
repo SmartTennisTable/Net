@@ -6,8 +6,8 @@ import os
 import signal
 import subprocess
 import RPi.GPIO as GPIO
-import sttiot
 import paho.mqtt.client as mqtt
+import sttiot
 
 # SET GPIO to default
 sttiot.initGPIO()

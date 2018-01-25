@@ -1,9 +1,8 @@
 import requests
 import time
 import RPi.GPIO as GPIO
-import paho.mqtt.client as mqtt
 from getch import getch
-
+import paho.mqtt.client as mqtt
 
 # IoT - SENSOR_NET
 SENSOR_NET_MESSAGE_ID = 'be4cb53c070a4aa01e96'
