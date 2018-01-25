@@ -11,6 +11,7 @@ INITPI_TABLE_MESSAGE_ID = '1b9af893f8531cfc0b71'
 # IoT - STTPie
 STTPIE_DEVICE_ID = '85732072-22b7-4cd1-ae8f-d363975c0f91'
 STTPIE_OAUTH_TOKEN = 'a8baa42b505b82ad0455643f8bed3a6'
+STTPIE_OAUTH_TOKEN = '67d2e8899a1f4eb4e972af17375d3f50'
 
 # IoT - IOTMMS
 IOTMMS_HTTP = 'https://iotmmsp1942978066trial.hanatrial.ondemand.com/com.sap.iotservices.mms/v1/api/http/data/'
