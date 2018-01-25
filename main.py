@@ -26,8 +26,13 @@ def on_connect(client, userdata, flags, rc):
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
-    print(msg.topic+" "+str(msg.payload))
-    print(str(msg.payload.messageType))
+    print(msg.topic)
+    payload = json.loads(msg.payload)
+    function = payload['messages'][0]['function']
+    action = payload['messages'][0]['action']
+
+    if function == "init":
+        execfile("/home/stt/net/netApp.py")
 
 
 # SET GPIO to default
