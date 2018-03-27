@@ -8,6 +8,7 @@ from statistics import mean
 import sttiot
 import RPi.GPIO as GPIO
 import paho.mqtt.client as mqtt
+import json
 
 
 TOPIC_PUSH = "iot/data/iotmmsp1942978066trial/v1/85732072-22b7-4cd1-ae8f-d363975c0f91"
