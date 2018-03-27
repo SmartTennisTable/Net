@@ -29,6 +29,7 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     print(msg.topic)
     payload = json.loads(msg.payload)
+	print(payload)
     function = payload['messages'][0]['function']
     action = payload['messages'][0]['action']
 
