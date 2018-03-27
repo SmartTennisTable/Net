@@ -12,7 +12,7 @@ import json
 
 
 TOPIC_PUSH = "iot/data/iotmmsp1942978066trial/v1/85732072-22b7-4cd1-ae8f-d363975c0f91"
-TOPIC_PULL = "iot/push/iotmmsp1942978066trial/v1/85732072-22b7-4cd1-ae8f-d363975c0f91"
+TOPIC_PULL = "iot/data/iotmmsp1942978066trial/v1/85732072-22b7-4cd1-ae8f-d363975c0f91"
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
