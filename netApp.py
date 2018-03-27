@@ -58,16 +58,16 @@ ID_MATCH = int(input("ID match : "))
 ID_TABLE = int(input("ID table : "))
 
 # on calibre l'accelerometre. il s'agit de trouver le seuil du LET. La calibration dure 3s.
-print("Calibration [IN PROGRES]")
+print("Calibration [IN PROGRESS]")
 
 while seuil == 0:
 	if len(liste_seuil) >= 3000:
 		seuil = mean(liste_seuil)
 		seuil = seuil + seuil * 0.1
 		print("Calibration [OK]")
-		GPIO.output(sttiot.REDPIN, True)
+		GPIO.output(sttiot.GREENPIN, True)
 		time.sleep(0.5)
-		GPIO.output(sttiot.REDPIN, False)
+		GPIO.output(sttiot.GREENPIN, False)
 
 	axes = adxl345.getAxes(True)
 	x = axes['x']
