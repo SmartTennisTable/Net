@@ -90,7 +90,7 @@ while True:
 
 			payload = '{"mode":"sync", "messageType": "' + sttiot.SENSOR_NET_MESSAGE_ID + '", "messages":[{"id_table": ' + str(
 				ID_TABLE) + ', "id_match": ' + str(ID_MATCH) + ', "id_let": ' + str(
-				indice_let) + ', "timestamp":' + str(timestamp) + '}]}'
+				indice_let) + ', "timestamp":' + str(timeStamp) + '}]}'
 
 			client.publish(TOPIC_PULL, payload)
 
