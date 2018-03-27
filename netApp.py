@@ -16,7 +16,7 @@ TOPIC_PULL = "iot/push/iotmmsp1942978066trial/v1/85732072-22b7-4cd1-ae8f-d363975
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
     if (rc == 0):
-        print("Ready to push daat to SAP Cloud Platform - IOTMMS - P1942978066")
+        print("Ready to push data to SAP Cloud Platform - IOTMMS - P1942978066")
     else:
         print("Connection aborted")
     #FromDevice
