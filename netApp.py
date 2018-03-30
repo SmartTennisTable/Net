@@ -99,8 +99,9 @@ while True:
 				time.sleep(0.1)
 				GPIO.output(sttiot.REDPIN, False)
 				time.sleep(0.1)
+				print(payload)
 
-
+					
 			indice_let = indice_let + 1
 		del liste_valeurs[:]
 
