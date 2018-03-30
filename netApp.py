@@ -22,6 +22,7 @@ def on_connect(client, userdata, flags, rc):
         print("Connection aborted")
     #FromDevice
     client.subscribe((TOPIC_PUSH, 1))
+	
     #ToDevice
     client.subscribe((TOPIC_PULL, 1))
 
@@ -29,13 +30,13 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
 	print(msg.topic)
 	payload = json.loads(msg.payload)
-	if(payload['messages'][0]['function']):
-		function = payload['messages'][0]['function']
-		action = payload['messages'][0]['action']
+	
+	function = payload['messages'][0]['function']
+	action = payload['messages'][0]['action']
 
-		if function == "init":
-			print(function)
-			execfile("/home/stt/net/netApp.py")
+	if function == "init":
+		print(function)
+		execfile("/home/stt/net/netApp.py")
 
 client = mqtt.Client()
 client.on_connect = on_connect
