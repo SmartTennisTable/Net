@@ -90,7 +90,7 @@ while True:
 			timeStamp = str(int(time.time()))
 			print("LET n {}; {}".format(indice_let, timeStampPrint))
 
-			payload = '{"mode":"sync","messageType":"'+sttiot.SENSOR_NET_MESSAGE_ID+'","messages":[{"id_table":'+str(ID_TABLE)+',"id_match":'+str(ID_MATCH)+',"id_let":'+str(indice_let)+',"timestamp":'+str(timeStamp)+'}]}'
+			payload = '{"mode":"sync","messageType":"'+sttiot.SENSOR_NET_MESSAGE_ID+'","messages":[{"id_table":'+float(ID_TABLE)+',"id_match":'+float(ID_MATCH)+',"id_let":'+float(indice_let)+',"timestamp":'+str(timeStamp)+'}]}'
 
 			client.publish(TOPIC_PULL, payload)
 
