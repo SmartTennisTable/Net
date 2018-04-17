@@ -90,7 +90,18 @@ while True:
 			timeStamp = str(int(time.time()))
 			print("LET n {}; {}".format(indice_let, timeStampPrint))
 
-			payload = '{"mode":"sync","messageType":"'+sttiot.SENSOR_NET_MESSAGE_ID+'","messages":[{"id_table":'+str(ID_TABLE)+',"id_match":'+str(ID_MATCH)+',"id_let":'+str(indice_let)+',"timestamp":'+str(timeStamp)+'}]}'
+			dicoJson = {}
+			dicoJson['mode'] = "sync"
+			dicoJson['messageType'] = sttiot.SENSOR_NET_MESSAGE_ID
+			dicoJson['messages'] = []
+			dicoJson['messages'].append({"id_table":str(ID_TABLE)})
+			dicoJson['messages'].append({"id_match": str(ID_MATCH)})
+			dicoJson['messages'].append({"id_let": str(indice_let)})
+			dicoJson['messages'].append({"timestamp": str(timeStamp)})
+
+			payload = json.dumps(dicoJson)
+
+			#payload = '{"mode":"sync","messageType":"'+sttiot.SENSOR_NET_MESSAGE_ID+'","messages":[{"id_table":'+str(ID_TABLE)+',"id_match":'+str(ID_MATCH)+',"id_let":'+str(indice_let)+',"timestamp":'+str(timeStamp)+'}]}'
 
 			client.publish(TOPIC_PULL, payload)
 
