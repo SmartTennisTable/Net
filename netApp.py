@@ -101,6 +101,7 @@ while True:
 			dicoJson['messages'].append({"timestamp": str(timeStamp)})
 
 			payload = json.dumps(dicoJson)
+			print(payload)
 
 			#payload = '{"mode":"sync","messageType":"'+sttiot.SENSOR_NET_MESSAGE_ID+'","messages":[{"id_table":'+str(ID_TABLE)+',"id_match":'+str(ID_MATCH)+',"id_let":'+str(indice_let)+',"timestamp":'+str(timeStamp)+'}]}'
 
@@ -111,7 +112,6 @@ while True:
 				time.sleep(0.1)
 				GPIO.output(sttiot.REDPIN, False)
 				time.sleep(0.1)
-				print(payload)
 
 					
 			indice_let = indice_let + 1
