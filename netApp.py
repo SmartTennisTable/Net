@@ -92,10 +92,10 @@ while True:
 			print("LET n {}; {}".format(indice_let, timeStampPrint))
 
 			dicoJson = {}
-			dicoJson['mode'] = "sync"
-			dicoJson['messageType'] = sttiot.SENSOR_NET_MESSAGE_ID
 			dicoJson['messages'] = []
 			dicoJson['messages'].append({"id_table":str(ID_TABLE),"id_match": str(ID_MATCH),"id_let": str(indice_let),"timestamp": str(timeStamp)})
+			dicoJson['messageType'] = sttiot.SENSOR_NET_MESSAGE_ID
+			dicoJson['mode'] = "sync"
 			#dicoJson['messages'].append({"id_match": str(ID_MATCH)})
 			#dicoJson['messages'].append({"id_let": str(indice_let)})
 			#dicoJson['messages'].append({"timestamp": str(timeStamp)})
