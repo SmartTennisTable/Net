@@ -22,19 +22,21 @@ def on_connect(client, userdata, flags, rc):
         print("Connection aborted")
     #FromDevice
     client.subscribe((TOPIC_PUSH, 1))
+	
     #ToDevice
     client.subscribe((TOPIC_PULL, 1))
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
-    print(msg.topic)
-    payload = json.loads(msg.payload)
-    print(payload)
-    function = payload['messages'][0]['function']
-    action = payload['messages'][0]['action']
+	print(msg.topic)
+	payload = json.loads(msg.payload)
+	
+	function = payload['messages'][0]['function']
+	action = payload['messages'][0]['action']
 
-    if function == "init":
-        execfile("/home/stt/net/netApp.py")
+	if function == "init":
+		print(function)
+		execfile("/home/stt/net/netApp.py")
 
 client = mqtt.Client()
 client.on_connect = on_connect
@@ -110,8 +112,9 @@ while True:
 				time.sleep(0.1)
 				GPIO.output(sttiot.REDPIN, False)
 				time.sleep(0.1)
+				print(payload)
 
-
+					
 			indice_let = indice_let + 1
 		del liste_valeurs[:]
 
